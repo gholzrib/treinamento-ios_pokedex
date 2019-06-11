@@ -9,22 +9,51 @@
 import UIKit
 
 class MovesViewController: UIViewController {
+    
+    @IBOutlet weak var tableView: UITableView!
+    let requestMaker = RequestMaker()
+    private var moves = [Move]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.configTable()
+        self.fetchData()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func configTable() {
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
     }
-    */
 
+}
+
+extension MovesViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return moves.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "move", for: indexPath)
+        if let moveCell = cell as? MoveTableViewCell {
+            moveCell.config(with: moves[indexPath.row])
+        }
+        return cell
+    }
+    
+    
+}
+
+extension MovesViewController: UITableViewDelegate {
+    
+}
+
+extension MovesViewController {
+    func fetchData() {
+        requestMaker.make(withEndpoint: .moves) { (moves: [Move]) in
+            self.moves = moves
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
 }

@@ -251,11 +251,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7Vc-Am-gAJ">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="75" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7Vc-Am-gAJ">
                                 <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="75" id="LA2-nT-epT" userLabel="move">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="move" id="LA2-nT-epT" userLabel="move" customClass="MoveTableViewCell" customModule="Pokedex" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LA2-nT-epT" id="pvt-Ml-SeK">
@@ -300,20 +300,20 @@
                                                         <constraint firstItem="XvP-v4-QMZ" firstAttribute="centerY" secondItem="h1h-k1-Ytm" secondAttribute="centerY" id="cWB-H8-QwS"/>
                                                         <constraint firstItem="pEa-Pt-dtY" firstAttribute="leading" secondItem="h1h-k1-Ytm" secondAttribute="leading" constant="21" id="dRa-Zi-aNQ"/>
                                                     </constraints>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                            <real key="value" value="20"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
                                                 </view>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="h1h-k1-Ytm" secondAttribute="bottom" id="2zp-Xo-OBl"/>
                                                 <constraint firstAttribute="trailing" secondItem="h1h-k1-Ytm" secondAttribute="trailing" id="7Ih-JZ-TrX"/>
                                                 <constraint firstItem="h1h-k1-Ytm" firstAttribute="leading" secondItem="pvt-Ml-SeK" secondAttribute="leading" id="BRL-7P-CeX"/>
-                                                <constraint firstAttribute="bottom" secondItem="h1h-k1-Ytm" secondAttribute="bottom" id="JbY-9A-e96"/>
                                                 <constraint firstItem="h1h-k1-Ytm" firstAttribute="top" secondItem="pvt-Ml-SeK" secondAttribute="top" id="XYs-nh-p1t"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="name" destination="pEa-Pt-dtY" id="Prf-JN-kXw"/>
+                                            <outlet property="typeImageView" destination="CsJ-0B-bxI" id="6Cp-nv-mzn"/>
+                                            <outlet property="typeView" destination="XvP-v4-QMZ" id="jI8-7F-zfn"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -328,6 +328,9 @@
                         <viewLayoutGuide key="safeArea" id="PVy-k4-5NL"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Moves" image="ic_moves" id="F8O-y4-geP"/>
+                    <connections>
+                        <outlet property="tableView" destination="7Vc-Am-gAJ" id="kTU-lh-0G3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zY4-6I-8Tr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
