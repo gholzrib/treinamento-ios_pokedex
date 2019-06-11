@@ -13,6 +13,7 @@ class MovesViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     let requestMaker = RequestMaker()
     private var moves = [Move]()
+    var move: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +24,12 @@ class MovesViewController: UIViewController {
     private func configTable() {
         self.tableView.delegate = self
         self.tableView.dataSource = self
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? MoveDetailsViewController {
+            destination.move = self.move
+        }
     }
 
 }
@@ -45,6 +52,10 @@ extension MovesViewController: UITableViewDataSource {
 
 extension MovesViewController: UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        self.move = self.moves[indexPath.row].name
+        self.performSegue(withIdentifier: "show-move-details", sender: nil)
+    }
 }
 
 extension MovesViewController {
