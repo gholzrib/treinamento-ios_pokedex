@@ -19,8 +19,43 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2to-48-D8A" userLabel="Background View" customClass="GradientView" customModule="Pokedex" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                        <color key="value" red="0.43137254899999999" green="0.58431372550000005" blue="0.99215686270000003" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                        <color key="value" red="0.61960784310000006" green="0.90980392160000001" blue="0.31764705879999999" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="horizontalMode" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <searchBar contentMode="redraw" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="pxc-Eb-YnY">
+                                <rect key="frame" x="0.0" y="88" width="414" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="Jcx-LE-001"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IUe-8U-R8j" userLabel="Divider top" customClass="GradientView" customModule="Pokedex" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="144" width="414" height="5"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="5" id="0kq-WH-PRU"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                        <color key="value" red="0.43137254899999999" green="0.58431372550000005" blue="0.99215686270000003" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                        <color key="value" red="0.61960784310000006" green="0.90980392160000001" blue="0.31764705879999999" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="75" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EtG-BE-3eH">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="149" width="414" height="659"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="pokemon" id="fT6-wI-szr" customClass="PokemonTableViewCell" customModule="Pokedex" customModuleProvider="target">
@@ -121,13 +156,41 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fHi-OB-Ynq" userLabel="Divider bottom" customClass="GradientView" customModule="Pokedex" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="808" width="414" height="5"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="5" id="Q3S-Na-FWF"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                        <color key="value" red="0.43137254899999999" green="0.58431372550000005" blue="0.99215686270000003" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                        <color key="value" red="0.61960784310000006" green="0.90980392160000001" blue="0.31764705879999999" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="EtG-BE-3eH" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Aoa-FI-9RO"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="EtG-BE-3eH" secondAttribute="trailing" id="QPd-B4-Taq"/>
-                            <constraint firstItem="EtG-BE-3eH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="snV-Fl-Ss8"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="EtG-BE-3eH" secondAttribute="bottom" id="uWq-YT-umW"/>
+                            <constraint firstItem="EtG-BE-3eH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="4vY-5T-RM6"/>
+                            <constraint firstItem="EtG-BE-3eH" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="5UX-DS-uQ9"/>
+                            <constraint firstItem="IUe-8U-R8j" firstAttribute="top" secondItem="pxc-Eb-YnY" secondAttribute="bottom" id="BKT-Kv-OTG"/>
+                            <constraint firstItem="pxc-Eb-YnY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Dgn-IG-W03"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="IUe-8U-R8j" secondAttribute="trailing" id="KLR-NF-EPP"/>
+                            <constraint firstItem="pxc-Eb-YnY" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="KeJ-of-7Aa"/>
+                            <constraint firstAttribute="trailing" secondItem="2to-48-D8A" secondAttribute="trailing" id="LY7-qI-cDd"/>
+                            <constraint firstItem="2to-48-D8A" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="LeQ-K3-SzS"/>
+                            <constraint firstItem="EtG-BE-3eH" firstAttribute="top" secondItem="IUe-8U-R8j" secondAttribute="bottom" id="SlS-hm-513"/>
+                            <constraint firstItem="fHi-OB-Ynq" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Z6d-Zm-hOQ"/>
+                            <constraint firstItem="2to-48-D8A" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="aYS-oe-yh7"/>
+                            <constraint firstItem="pxc-Eb-YnY" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="cO7-a3-cyJ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="fHi-OB-Ynq" secondAttribute="bottom" id="fSx-XD-W1q"/>
+                            <constraint firstItem="IUe-8U-R8j" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="mPH-SM-jZj"/>
+                            <constraint firstItem="fHi-OB-Ynq" firstAttribute="top" secondItem="EtG-BE-3eH" secondAttribute="bottom" id="q2J-NY-exi"/>
+                            <constraint firstItem="fHi-OB-Ynq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="rl2-vj-G7x"/>
+                            <constraint firstAttribute="bottom" secondItem="2to-48-D8A" secondAttribute="bottom" id="w0a-tV-CyR"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -230,7 +293,6 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="JGc-Q1-baE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="selectedImageTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>

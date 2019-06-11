@@ -11,9 +11,7 @@ import UIKit
 class PokemonListViewController: UIViewController {
     
     @IBOutlet weak var tableView : UITableView!
-    
     let requestMaker = RequestMaker()
-    
     var pokemonList = [Pokemon]()
     
     override func viewDidLoad() {
