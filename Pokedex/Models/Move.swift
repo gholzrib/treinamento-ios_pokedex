@@ -17,11 +17,11 @@ struct Move : Codable {
 struct MoveDetails : Codable {
     
     let id: Int
-    let accuracy: Int
+    let accuracy: Int?
     let name: String
     let type: MoveType
-    let power: Int
-    let pp: Int
+    let power: Int?
+    let pp: Int?
     let effectEntries: [MoveEntry]
     
     enum CodingKeys: String, CodingKey {

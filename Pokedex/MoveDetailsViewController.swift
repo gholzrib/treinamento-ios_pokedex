@@ -54,11 +54,17 @@ class MoveDetailsViewController: UIViewController {
             effect.text = "N/D"
         }
         basePowerLabel.textColor = pokemonType.color
-        basePower.text = moveDetails.power.description
+        if let desc = moveDetails.power?.description {
+            basePower.text = desc
+        }
         accuracyLabel.textColor = pokemonType.color
-        accuracy.text = "\(moveDetails.accuracy.description)%"
+        if let acc = moveDetails.accuracy?.description {
+            accuracy.text = "\(acc)%"
+        }
         ppLabel.textColor = pokemonType.color
-        pp.text = moveDetails.pp.description
+        if let ppString = moveDetails.pp?.description {
+            pp.text = ppString
+        }
     }
     
     @IBAction func goBack() {

@@ -52,7 +52,7 @@ extension MovesViewController: UITableViewDataSource {
 
 extension MovesViewController: UITableViewDelegate {
     
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.move = self.moves[indexPath.row].name
         self.performSegue(withIdentifier: "show-move-details", sender: nil)
     }
