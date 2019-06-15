@@ -16,16 +16,14 @@ class PokemonDetailsViewController: UIViewController {
     @IBOutlet weak var pokemonImageViewWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var pokemonImageViewCenterYConstraint: NSLayoutConstraint!
     @IBOutlet weak var pokemonImageViewTopConstraint: NSLayoutConstraint!
-    @IBOutlet weak var pokemonTypeView: PokemonTypeView!
+    
+    @IBOutlet weak var pokemonStats: PokemonStatView!
     
     var pokemon: Pokemon?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initialConfig()
-        if let type = pokemon?.types.first {
-            self.pokemonTypeView.config(type: type)
-        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -55,6 +53,9 @@ class PokemonDetailsViewController: UIViewController {
     
     func animatePokemonToTop() {
         DispatchQueue.main.async {
+            if let stats = self.pokemon?.stats?.first {
+                self.pokemonStats.config(pokemonStat: stats)
+            }
             self.imageView.layer.removeAllAnimations()
             self.pokemonImageViewCenterYConstraint.priority = .defaultLow
             self.pokemonImageViewTopConstraint.priority = .defaultHigh
@@ -71,6 +72,7 @@ class PokemonDetailsViewController: UIViewController {
         if let pokemon = self.pokemon {
             let requestMaker = RequestMaker()
             requestMaker.make(withEndpoint: .details(query: pokemon.id)) { (pokemon: Pokemon) in
+                self.pokemon = pokemon
                 self.animatePokemonToTop()
             }
         }

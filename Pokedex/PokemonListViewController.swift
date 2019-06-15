@@ -67,10 +67,6 @@ extension PokemonListViewController {
                 self.tableView.reloadData()
             }
         }
-//        requestMaker.make(withEndpoint: .details(query: "1")) {(pokemon: Pokemon) in
-//            print(pokemon)
-//        }
     }
-    
 }
 
