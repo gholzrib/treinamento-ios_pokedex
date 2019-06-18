@@ -8,7 +8,16 @@
 
 import Foundation
 
+enum RequestMakerError: Error {
+    case malformedURL
+    case requestFailed
+    case invalidData
+    case decodingFailed
+}
+
 class RequestMaker {
+    
+    static let decoder = JSONDecoder()
     
     var baseUrl: String
     
@@ -41,26 +50,40 @@ class RequestMaker {
     }
     
     let session = URLSession.shared
-    typealias CompletionCallback<T: Decodable> = (T) -> Void
+    typealias RequestResult<T> = Result<T, RequestMakerError>
+    typealias CompletionCallback<T: Decodable> = (RequestResult<T>) -> Void
+    typealias SuccessCallback<T: Decodable> = (T) -> Void
+    
+    func make<T: Decodable>(withEndpoint endpoint: Endpoint, completion: @escaping SuccessCallback<T>) {
+        make(withEndpoint: endpoint) { (result: RequestResult<T>) in
+            switch result {
+            case let .success(object):
+                completion(object)
+            case .failure:
+                break
+            }
+        }
+    }
     
     func make<T: Decodable>(withEndpoint endpoint: Endpoint, completion: @escaping CompletionCallback<T>) {
         guard let url = URL(string: "\(self.baseUrl)\(endpoint.url)") else {
+            completion(.failure(.malformedURL))
             return
         }
         let dataTask = session.dataTask(with: url) { (data: Data?, response: URLResponse?, error: Error?) in
             guard error == nil else {
-                print(error!)
+                completion(.failure(.requestFailed))
                 return
             }
             guard let data = data else {
-                print("não veio")
+                completion(.failure(.invalidData))
                 return
             }
             do {
-                let decodedObject = try JSONDecoder().decode(T.self, from: data)
-                completion(decodedObject)
-            } catch let error {
-                print(error.localizedDescription)
+                let decodedObject = try RequestMaker.decoder.decode(T.self, from: data)
+                completion(.success(decodedObject))
+            } catch {
+                completion(.failure(.decodingFailed))
             }
         }
         dataTask.resume()
